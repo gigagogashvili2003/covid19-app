@@ -1,24 +1,62 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react";
+import List from "./components/List";
+import ListItem from "./components/ListItem";
+import { fetchData } from "./store/covid19Actions";
+import { useSelector, useDispatch } from "react-redux";
+
+import Header from "./components/Header";
+import Spinner from "./components/UI/Spinner";
+import ErrorUI from "./components/UI/ErrorUI";
 
 function App() {
+  const dispatch = useDispatch();
+  const { error, loading } = useSelector((state) => state.ui);
+
+  const covidData = useSelector((state) => state.data);
+
+  const countriesData = covidData.countriesData;
+  useEffect(() => {
+    dispatch(fetchData());
+  }, []);
+
+  let listItemContent;
+
+  if (countriesData) {
+    listItemContent = countriesData.map((data, index) => (
+      <ListItem
+        key={data.country}
+        data={{
+          name: data.country,
+          totalCases: data.cases,
+          newCases: data.todayCases,
+          totalDeaths: data.deaths,
+          newDeaths: data.todayDeaths,
+          totalRecovered: data.recovered,
+          newRecovered: data.todayRecovered,
+          activeCases: data.active,
+          seriousCritical: data.critical,
+          tests: data.tests,
+          cases1M: data.casesPerOneMillion,
+          deaths1M: data.deathsPerOneMillion,
+          tests1M: data.testsPerOneMillion,
+          population: data.population,
+        }}
+        contentLength={index + 1}
+      />
+    ));
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {!loading && !error && (
+        <List>
+          <Header />
+          {listItemContent}
+        </List>
+      )}
+      {loading && <Spinner />}
+      {error && <ErrorUI />}
+    </>
   );
 }
 

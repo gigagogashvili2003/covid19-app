@@ -1,0 +1,46 @@
+.listItem {
+  width: 1450px;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  position: relative;
+  top: 49px;
+  background-color: #f4f4f4;
+}
+
+.listItem h2 {
+  width: 100%;
+  height: 50px;
+  display: flex;
+
+  align-items: center;
+  color: #53566d;
+  font-size: 14px;
+  justify-content: center;
+  position: relative;
+  font-weight: 400;
+  border: 1px solid #dddddd;
+}
+
+.listItem h2:nth-child(1) {
+  color: #337ab7;
+  font-weight: bold;
+}
+
+.countryName {
+  font-weight: bold;
+}
+
+.countryName::before {
+  content: attr(data-content);
+  position: absolute;
+  border: 1px solid #dddddd;
+  width: 30px;
+  height: 50px;
+  left: -2rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+}

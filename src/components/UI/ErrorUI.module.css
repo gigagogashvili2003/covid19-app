@@ -1,0 +1,34 @@
+.errorContainer {
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  color: darkred;
+}
+
+.errorContainer h1 {
+  font-size: 60px;
+  line-height: 80px;
+}
+
+.errorContainer button {
+  background-color: darkcyan;
+  color: white;
+  border-radius: 20px;
+  outline: none;
+  border: none;
+  width: 200px;
+  font-size: 25px;
+  height: 60px;
+  margin-top: 25px;
+  transition: all 0.3s ease-out;
+}
+
+.errorContainer button:hover {
+  background-color: rgb(0, 153, 255);
+  cursor: pointer;
+}
