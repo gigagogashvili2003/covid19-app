@@ -1,12 +1,11 @@
 .header {
-  width: 1450px;
+  width: 1500px;
   position: fixed;
-  left: 34px;
+  left: 0;
   background-color: white;
   z-index: 1;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 .header h2 {
@@ -14,28 +13,19 @@
   font-weight: bold;
   width: 100%;
   height: 50px;
-  display: flex;
   font-size: 14px;
-  padding: 10px;
-  align-items: center;
 
+  display: flex;
+  align-items: center;
   justify-content: center;
   border: 1px solid #dddddd;
 }
-.country {
-  position: relative;
-}
 
-.country::before {
-  content: "#";
-  position: absolute;
+.header span {
+  width: 30%;
   border: 1px solid #dddddd;
-  width: 30px;
-  height: 48px;
-  left: -2rem;
-  background-color: white;
-
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 12px;
 }

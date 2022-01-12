@@ -1,24 +1,14 @@
 import React from "react";
 import classes from "./ListItem.module.css";
 
-function ListItem({ data, contentLength }) {
-  let fixedPopulation;
-
-  if (data.population > 10000 && data.population < 1000000) {
-    fixedPopulation = data.population / 1000;
-  }
-  if (data.population > 1000000 && data.population < 10000000) {
-    fixedPopulation = data.population / 100000;
-  }
-
+function ListItem({ data, index }) {
   return (
     <div
       className={classes.listItem}
       style={{ background: `${data.totalCases < 100 ? "#eaf7d5" : ""}` }}
     >
-      <h2 className={classes.countryName} data-content={contentLength}>
-        {data.name}
-      </h2>
+      <span>{index}</span>
+      <h2 className={classes.countryName}>{data.name}</h2>
       <h2>{data.totalCases.toString().replace(/(.)(?=(\d{3})+$)/g, "$1,")}</h2>
       <h2 style={{ backgroundColor: `${data.newCases > 0 ? "#FFEEAA" : ""}` }}>
         {data.newCases.toString().replace(/(.)(?=(\d{3})+$)/g, "$1,")}

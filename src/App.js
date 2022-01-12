@@ -41,7 +41,7 @@ function App() {
           tests1M: data.testsPerOneMillion,
           population: data.population,
         }}
-        contentLength={index + 1}
+        index={index + 1}
       />
     ));
   }
