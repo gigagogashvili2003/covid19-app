@@ -5,7 +5,16 @@ function ListItem({ data, index }) {
   return (
     <div
       className={classes.listItem}
-      style={{ background: `${data.totalCases < 100 ? "#eaf7d5" : ""}` }}
+      style={{
+        background: `${
+          data.totalCases < 100 &&
+          data.totalRecovered > data.totalCases / 2 &&
+          data.activeCases < 5 &&
+          data.totalDeaths < 1
+            ? "#90ee90"
+            : ""
+        }`,
+      }}
     >
       <span>{index}</span>
       <h2 className={classes.countryName}>{data.name}</h2>
